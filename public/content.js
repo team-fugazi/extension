@@ -2,7 +2,7 @@
 
 // Function to change the background color of all paragraphs to yellow
 function changeParagraphColor() {
-  const paragraphs = document.querySelectorAll("p");
+  const paragraphs = document.querySelectorAll("span");
   paragraphs.forEach((paragraph) => {
     paragraph.style.backgroundColor = "yellow";
   });
