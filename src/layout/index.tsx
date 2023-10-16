@@ -4,16 +4,15 @@ import { useAuth0 } from "@auth0/auth0-react";
 import * as Tabs from "@radix-ui/react-tabs";
 
 // Local Components
-import { LoginButton } from "./LoginButton";
-import { Avatar } from "./Avatar";
+import { LoginButton } from "../components/LoginButton";
+import { Avatar } from "../components/Avatar";
+import Loading from "./Loading";
 
-export const Popup = () => {
+const MainScreen = () => {
   const { isAuthenticated, error, isLoading, user } = useAuth0();
 
   // Return Loading screen if Auth0 is still loading
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  if (isLoading) return <Loading />;
 
   // Return Auth Screen if not authenticated
   if (!isAuthenticated) {
@@ -24,32 +23,77 @@ export const Popup = () => {
     return (
       <main className="rounded-lg border border-gray-100 text-center w-[320px]">
         {/* Header */}
-        <div className="flex flex-row justify-between items-center border-b border-gray-100 px-6 py-5">
-          {isAuthenticated && user ? <Avatar user={user}/> : <LoginButton />}
-          <p>{user?.name}</p>
+        <div className="flex flex-row justify-start items-center border-b border-gray-100 px-6 py-5">
+          {isAuthenticated && user ? <Avatar user={user} /> : <LoginButton />}
+          <div className="-space-y-1 pl-2">
+            <p className="text-sm">{user?.name}</p>
+            <p className="text-xs text-gray-400">{user?.email}</p>
+          </div>
         </div>
 
         {/* Tabs */}
-        <Tabs.Root defaultValue="tab1">
+        <Tabs.Root defaultValue="sub">
+          {/* Tabs Nav */}
           <div className="flex flex-row border-b h-12 items-center">
             {/* Tabs Nav */}
             <Tabs.List className="flex flex-row justify-evenly h-12 grow">
               <Tabs.Trigger
-                value="tab1"
-                className="hover:bg-gray-100 w-full font-semibold subpixel-antialiased"
+                value="scan"
+                className="hover:bg-gray-200 w-full font-medium subpixel-antialiased"
               >
-                Scan Content
+                Scan
               </Tabs.Trigger>
               <Tabs.Trigger
-                value="tab2"
-                className="hover:bg-gray-100 w-full font-semibold subpixel-antialiased"
+                value="sub"
+                className="hover:bg-gray-100 w-full font-medium subpixel-antialiased"
+              >
+                Subreddit
+              </Tabs.Trigger>
+              <Tabs.Trigger
+                value="stats"
+                className="hover:bg-gray-100 w-full font-medium subpixel-antialiased"
               >
                 Statistics
               </Tabs.Trigger>
             </Tabs.List>
           </div>
 
-          <Tabs.Content value="tab1">
+          {/* Tab: Content Scan */}
+          <Tabs.Content value="scan">
+            <div className="border-t border-gray-75">
+              <label htmlFor="OrderNotes" className="sr-only">
+                Order notes
+              </label>
+
+              <div className="overflow-hidden shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
+                <textarea
+                  id="OrderNotes"
+                  className="w-full resize-none border-none align-top focus:ring-0 sm:text-sm p-1"
+                  rows={4}
+                  placeholder="Enter any additional order notes..."
+                ></textarea>
+
+                <div className="flex items-center justify-end gap-2 bg-white p-3">
+                  <button
+                    type="button"
+                    className="rounded bg-gray-200 px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-gray-600"
+                  >
+                    Clear
+                  </button>
+
+                  <button
+                    type="button"
+                    className="rounded bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-indigo-700"
+                  >
+                    Scan
+                  </button>
+                </div>
+              </div>
+            </div>
+          </Tabs.Content>
+
+          {/* Tab: Subreddit info */}
+          <Tabs.Content value="sub">
             <a className="relative block overflow-hidden p-4">
               <div className="text-left">
                 <h3 className="text-md font-bold text-gray-900 sm:text-lg">
@@ -85,40 +129,10 @@ export const Popup = () => {
                 </div>
               </dl>
             </a>
-
-            <div className="border-t border-gray-75">
-              <label htmlFor="OrderNotes" className="sr-only">
-                Order notes
-              </label>
-
-              <div className="overflow-hidden shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
-                <textarea
-                  id="OrderNotes"
-                  className="w-full resize-none border-none align-top focus:ring-0 sm:text-sm p-1"
-                  rows={4}
-                  placeholder="Enter any additional order notes..."
-                ></textarea>
-
-                <div className="flex items-center justify-end gap-2 bg-white p-3">
-                  <button
-                    type="button"
-                    className="rounded bg-gray-200 px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-gray-600"
-                  >
-                    Clear
-                  </button>
-
-                  <button
-                    type="button"
-                    className="rounded bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-indigo-700"
-                  >
-                    Scan
-                  </button>
-                </div>
-              </div>
-            </div>
           </Tabs.Content>
 
-          <Tabs.Content value="tab2">
+          {/* Tab: User Statistics */}
+          <Tabs.Content value="stats">
             <article className="flex items-end justify-between rounded-lg border border-gray-100 bg-white p-6">
               <div>
                 <p className="text-sm text-gray-500">Profit</p>
