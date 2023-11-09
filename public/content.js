@@ -8,7 +8,9 @@ function changeParagraphColor() {
   });
 }
 
+
 function getAllPosts() {
+  console.log("hello")
   const posts = document.querySelectorAll("div[data-testid='post-container']")
   posts.forEach((post) => {
 
@@ -16,8 +18,26 @@ function getAllPosts() {
     const paragraph = post.querySelectorAll("p")
     //console.log(title)
     //console.log(paragraph)
-    console.log(post)
-    console.log(post.querySelector("div:last-child:not(:has(> div))"))
+    
+    
+    const postNodes = post.querySelectorAll("div:not(:has(> div))")
+    const lastNode = postNodes[postNodes.length - 1]
+    
+    var container = document.createElement("div")
+    var circle = document.createElement('div');
+    var statusContainer = document.createElement('div');
+    
+    container.className = "container"
+    circle.className = "circle"
+    statusContainer.className = "status-container"
+
+    
+    
+    lastNode.appendChild(container)
+    container.appendChild(circle)
+    
+    circle.appendChild(statusContainer)
+
   });
 }
 
