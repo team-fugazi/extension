@@ -6,7 +6,7 @@ import * as Tabs from "@radix-ui/react-tabs";
 // Local Components
 import { LoginButton } from "../components/LoginButton";
 import { Avatar } from "../components/Avatar";
-import Loading from "./Loading";
+import Loading from "../screens/Loading";
 
 const MainScreen = () => {
   const { isAuthenticated, error, isLoading, user } = useAuth0();
