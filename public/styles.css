@@ -8,6 +8,10 @@
     position: relative;
 }
 
+.extra {
+    align-self: center;
+}
+
 
 
 .status-container {

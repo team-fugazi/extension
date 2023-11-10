@@ -37,6 +37,7 @@ async function getAllPosts() {
 
     const postNodes = post.querySelectorAll("div:not(:has(> div))");
     const lastNode = postNodes[postNodes.length - 1];
+    lastNode.className = "extra";
 
     var container = document.createElement("div");
     var circle = document.createElement("div");
