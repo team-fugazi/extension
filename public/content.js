@@ -16,22 +16,16 @@ const delay = (ms) => new Promise((res) => setTimeout(res, ms));
   getAllPosts();
 });
 */
-
 // Run script again once dom changes
-
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  console.log("Hello");
-
-  return true;
-});
+// chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+//   console.log("Hello");
+//   return true;
+// });
 async function getAllPosts() {
-  await delay(6000);
+  await delay(5000);
 
-  console.log("hello");
   const posts = document.querySelectorAll("div[data-testid='post-container']");
   posts.forEach((post) => {
-    console.log("being called");
-
     const title = post.querySelector("h3");
     const paragraph = post.querySelectorAll("p");
 
@@ -58,6 +52,7 @@ async function getAllPosts() {
       $(this).find(".status-container").animate(
         {
           width: "100px",
+          transition: "width 2s",
         },
         "fast"
       );
@@ -66,6 +61,7 @@ async function getAllPosts() {
       $(this).find(".status-container").animate(
         {
           width: "0px",
+          transition: "width 2s",
         },
         "fast"
       );
