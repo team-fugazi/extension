@@ -52,6 +52,25 @@ async function getAllPosts() {
 
     circle.appendChild(statusContainer);
   });
+
+  $(".circle").hover(
+    function () {
+      $(this).find(".status-container").animate(
+        {
+          width: "100px",
+        },
+        "fast"
+      );
+    },
+    function () {
+      $(this).find(".status-container").animate(
+        {
+          width: "0px",
+        },
+        "fast"
+      );
+    }
+  );
 }
 
 // Execute the function when the DOM is ready
