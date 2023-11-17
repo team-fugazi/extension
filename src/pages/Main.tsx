@@ -19,11 +19,6 @@ const MainScreen = () => {
   // Return Loading screen if Auth0 is still loading
   if (isLoading) return <Loading />;
 
-  // Return Auth Screen if not authenticated
-  if (!isAuthenticated) {
-    return <LoginButton />;
-  }
-
   if (!error) {
     return (
       <main className="rounded-lg border border-gray-100 text-center w-[320px]">

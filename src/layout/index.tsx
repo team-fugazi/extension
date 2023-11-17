@@ -24,7 +24,7 @@ const MainScreen = () => {
       <main className="rounded-lg border border-gray-100 text-center w-[320px]">
         {/* Header */}
         <div className="flex flex-row justify-start items-center border-b border-gray-100 px-6 py-5">
-          {isAuthenticated && user ? <Avatar user={user} /> : <LoginButton />}
+          {isAuthenticated && user ? <Avatar user={user} /> : <>Test</>}
           <div className="-space-y-1 pl-2">
             <p className="text-sm">{user?.name}</p>
             <p className="text-xs text-gray-400">{user?.email}</p>
