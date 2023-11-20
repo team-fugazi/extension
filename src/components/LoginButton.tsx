@@ -1,3 +1,5 @@
+/*global chrome*/
+
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -8,8 +10,11 @@ export const LoginButton = () => {
     !isAuthenticated && (
       <button
         onClick={() => {
-          console.log("debug");
-          loginWithRedirect();
+          loginWithRedirect({
+            async openUrl(url) {
+              await chrome.tabs.create({ url: url }); // todo: ignore chrome object in ts config
+            },
+          });
         }}
       >
         Log in
