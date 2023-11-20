@@ -10,11 +10,6 @@ export const LoginButton = () => {
     !isAuthenticated && (
       <button
         onClick={() => {
-          // loginWithRedirect({
-          //   async openUrl(url) {
-          //     await chrome.tabs.create({ url: url }); // todo: ignore chrome object in ts config
-          //   },
-          // });
           loginWithPopup();
         }}
       >
