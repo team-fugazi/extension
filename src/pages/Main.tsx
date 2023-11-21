@@ -12,6 +12,7 @@ import Subreddit from "../screens/Subreddit";
 // Local Components
 import { LoginButton } from "../components/LoginButton";
 import { Avatar } from "../components/Avatar";
+import { LogoutButton } from "../components/LogoutButton";
 
 const MainScreen = () => {
   const { isAuthenticated, error, isLoading, user } = useAuth0();
@@ -30,6 +31,7 @@ const MainScreen = () => {
               <div className="-space-y-1 pl-2">
                 <p className="text-sm">{user?.name}</p>
                 <p className="text-xs text-gray-400">{user?.email}</p>
+                <LogoutButton />
               </div>
             </>
           ) : (

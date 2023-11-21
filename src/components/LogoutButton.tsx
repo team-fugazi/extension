@@ -10,7 +10,7 @@ export const LogoutButton = () => {
         onClick={() => {
           logout({
             logoutParams: {
-              returnTo: window.location.origin,
+              returnTo: window.location.origin + "/index.html",
             },
           });
         }}

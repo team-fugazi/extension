@@ -135,7 +135,7 @@ const MainScreen = () => {
           <Tabs.Content value="stats">
             <article className="flex items-end justify-between rounded-lg border border-gray-100 bg-white p-6">
               <div>
-                <p className="text-sm text-gray-500">Profit</p>
+                <p className="text-sm text-gray-500">Posted index</p>
 
                 <p className="text-2xl font-medium text-gray-900">$240.94</p>
               </div>
@@ -162,7 +162,7 @@ const MainScreen = () => {
 
             <article className="flex items-end justify-between rounded-lg border border-gray-100 bg-white p-6">
               <div>
-                <p className="text-sm text-gray-500">Profit</p>
+                <p className="text-sm text-gray-500">Detection rate</p>
 
                 <p className="text-2xl font-medium text-gray-900">$240.94</p>
               </div>

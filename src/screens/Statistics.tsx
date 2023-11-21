@@ -5,7 +5,7 @@ const Statistics = () => {
     <div className="divide-y">
       <article className="flex items-end justify-between  border-gray-100 bg-white p-6">
         <div>
-          <p className="text-sm text-gray-500">Profit</p>
+          <p className="text-sm text-gray-500">My contribution</p>
 
           <p className="text-2xl font-medium text-gray-900">$240.94</p>
         </div>
@@ -32,7 +32,7 @@ const Statistics = () => {
 
       <article className="flex items-end justify-between border-gray-100 bg-white p-6">
         <div>
-          <p className="text-sm text-gray-500">Profit</p>
+          <p className="text-sm text-gray-500">Posted index</p>
           <p className="text-2xl font-medium text-gray-900">$240.94</p>
         </div>
 

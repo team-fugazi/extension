@@ -6,6 +6,7 @@ import * as Tabs from "@radix-ui/react-tabs";
 // Local Components
 import { LoginButton } from "./LoginButton";
 import { Avatar } from "./Avatar";
+import { LogoutButton } from "./LogoutButton";
 
 export const Popup = () => {
   const { isAuthenticated, error, isLoading, user } = useAuth0();
@@ -25,7 +26,13 @@ export const Popup = () => {
       <main className="rounded-lg border border-gray-100 text-center w-[320px]">
         {/* Header */}
         <div className="flex flex-row justify-between items-center border-b border-gray-100 px-6 py-5">
-          {isAuthenticated && user ? <Avatar user={user}/> : <LoginButton />}
+          {isAuthenticated && user ? (
+            <>
+              <Avatar user={user} /> <LogoutButton />
+            </>
+          ) : (
+            <LoginButton />
+          )}
           <p>{user?.name}</p>
         </div>
 
@@ -121,7 +128,7 @@ export const Popup = () => {
           <Tabs.Content value="tab2">
             <article className="flex items-end justify-between rounded-lg border border-gray-100 bg-white p-6">
               <div>
-                <p className="text-sm text-gray-500">Profit</p>
+                <p className="text-sm text-gray-500">Total index</p>
 
                 <p className="text-2xl font-medium text-gray-900">$240.94</p>
               </div>
