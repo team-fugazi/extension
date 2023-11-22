@@ -1,8 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
-
 // Radix UI Primitives
 import * as Tabs from "@radix-ui/react-tabs";
-
 // Screens
 import Loading from "../screens/Loading";
 import Statistics from "../screens/Statistics";
@@ -13,9 +11,14 @@ import Subreddit from "../screens/Subreddit";
 import { LoginButton } from "../components/LoginButton";
 import { Avatar } from "../components/Avatar";
 import { LogoutButton } from "../components/LogoutButton";
+import { useEffect } from "react";
 
 const MainScreen = () => {
   const { isAuthenticated, error, isLoading, user } = useAuth0();
+
+  useEffect(() => {
+    console.log("Hello");
+  }, [isAuthenticated]);
 
   // Return Loading screen if Auth0 is still loading
   if (isLoading) return <Loading />;
