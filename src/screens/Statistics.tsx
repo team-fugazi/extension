@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const Statistics = () => {
+  useEffect(() => {
+    // todo: load statistics everytime user enter a new subreddit
+  });
+
   return (
     <div className="divide-y">
       <article className="flex items-end justify-between  border-gray-100 bg-white p-6">

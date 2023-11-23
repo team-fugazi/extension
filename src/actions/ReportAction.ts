@@ -1,0 +1,3 @@
+function getMyContributionAction() {}
+
+function getPostedIndexAction() {}

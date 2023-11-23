@@ -16,7 +16,7 @@
     "content_scripts": [
         {
           "matches": ["<all_urls>"],
-          "js": ["main.min.js", "jquery-3.7.1.js"],
+          "js": ["main.ts", "jquery-3.7.1.js", "lib/chrome.ts"],
           "css": ["styles.css"],
           "run_at": "document_end"
         }
