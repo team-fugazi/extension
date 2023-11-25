@@ -12,6 +12,7 @@ export const LogoutButton = () => {
       },
     }).then(() => {
       window.location.reload();
+      console.log("Not refresh");
     });
   };
 

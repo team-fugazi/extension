@@ -3,11 +3,17 @@ import { Auth0Provider } from "@auth0/auth0-react";
 
 // Local Components
 import MainScreen from "./pages/Main";
+import { useEffect } from "react";
+import { subredditAbout } from "./api/RedditApi";
 // Environment variables
 const domain = import.meta.env.VITE_AUTH0_DOMAIN;
 const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
 
 function App() {
+  useEffect(() => {
+    subredditAbout("learnpython");
+  });
+
   return (
     <Auth0Provider
       domain={domain}
