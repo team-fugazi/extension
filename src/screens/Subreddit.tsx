@@ -37,7 +37,9 @@ const Subreddit = () => {
             <div className="flex flex-col">
               <dt className="text-sm  text-gray-600">Created</dt>
               <dd className="text-xs text-gray-500">
-                {new Date(subreddit.created_utc).toDateString()}
+                {new Date(
+                  parseInt(subreddit.created_utc) * 1000
+                ).toDateString()}
               </dd>
             </div>
 
