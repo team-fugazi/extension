@@ -1,5 +1,8 @@
 export function getMeApi(idToken: string) {
-  return fetch(`http://localhost:8000/v1/users/me`, {
+  console.log("ID TOKEN");
+  console.log(idToken);
+  console.log("ID TOKEN");
+  return fetch(`http://localhost:7002/v1/users/me`, {
     method: "GET",
     headers: new Headers({
       Authorization: "Bearer " + idToken,

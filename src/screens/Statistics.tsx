@@ -1,9 +1,30 @@
-import React, { useEffect } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import React, { useContext, useEffect } from "react";
+import { UserContext } from "../context/UserContext";
 
 const Statistics = () => {
+  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { onRetrieveUserStats } = useContext(UserContext);
+
   useEffect(() => {
+    if (isLoading == false && isAuthenticated) {
+      console.log("auth");
+      onRetrieveUserStats(user.sub);
+    }
     // todo: load statistics everytime user enter a new subreddit
+    chrome.storage.local.get("numberOfAnalysedPosts", function (data) {
+      if (typeof data.numberOfAnalysedPosts == "undefined") {
+        console.log("undefined");
+      } else {
+        console.log(data.numberOfAnalysedPosts);
+      }
+    });
   });
+
+  if (isLoading == false && isAuthenticated) {
+    console.log("authenticated");
+    onRetrieveUserStats(user.sub);
+  }
 
   return (
     <div className="divide-y">

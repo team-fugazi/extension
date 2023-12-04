@@ -9,6 +9,7 @@ type Props = {
 
 const RedditProvider = ({ children }: Props) => {
   const [subreddit, setSubreddit] = useState<null | subredditModel>(null);
+  const [numberOfScannedPosts, setNumberOfScannedPosts] = useState<number>(0);
 
   const onRetrieveSubreddit = async (subreddit: string) => {
     const result: subredditModel = await subredditInformationApi(subreddit);
@@ -19,6 +20,8 @@ const RedditProvider = ({ children }: Props) => {
     <RedditContext.Provider
       value={{
         subreddit,
+        numberOfScannedPosts,
+        setNumberOfScannedPosts,
         setSubreddit,
         onRetrieveSubreddit,
       }}

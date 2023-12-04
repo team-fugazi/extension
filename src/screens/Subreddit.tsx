@@ -1,10 +1,14 @@
+/*global google*/
 import React, { useContext, useEffect, useState } from "react";
-
 import reddit from "../assets/reddit-logo.png";
 import { RedditContext } from "../context/RedditContext";
 
 const Subreddit = () => {
-  const { subreddit } = useContext(RedditContext);
+  const { subreddit, numberOfScannedPosts } = useContext(RedditContext);
+
+  useEffect(() => {
+    //    let test = new google.map
+  });
 
   return (
     <div>
@@ -50,7 +54,33 @@ const Subreddit = () => {
           </dl>
         </a>
       ) : (
-        <a>you are not in a subreddit</a>
+        <a className="relative block overflow-hidden p-4">
+          {/* Subreddit Intro */}
+          <div className="flex flex-row gap-2">
+            <img src={reddit} alt="Subreddit" className="rounded w-8 h-8" />
+
+            <div className="flex flex-col -space-y-1 ">
+              <h3 className="font-semibold text-gray-900 text-md">
+                Reddit Dashboard
+              </h3>
+              {/* <p className="font-medium text-gray-600 text-xs ">/subreddit</p> */}
+            </div>
+          </div>
+
+          {/* Subreddit Description */}
+          {/* Subreddit Meta */}
+          <dl className="mt-4 flex gap-4 sm:gap-6 justify-evenly">
+            <div className="flex flex-col">
+              <dt className="text-sm  text-gray-600">AI Detected Posts</dt>
+              <dd className="text-xs text-gray-500">0</dd>
+            </div>
+
+            <div className="flex flex-col">
+              <dt className="text-sm  text-gray-600">Analysed posts</dt>
+              <dd className="text-xs text-gray-500">{numberOfScannedPosts}</dd>
+            </div>
+          </dl>
+        </a>
       )}
     </div>
   );
