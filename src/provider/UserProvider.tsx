@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { subredditModel } from "../types/Types";
+import { statistics, subredditModel } from "../types/Types";
 import { UserContext } from "../context/UserContext";
 import { getUserStatsApi } from "../api/ReportsApi";
 
@@ -8,11 +8,14 @@ type Props = {
 };
 
 const UserProvider = ({ children }: Props) => {
-  const [userStats, setUserStats] = useState<null | subredditModel>(null);
+  const [userStats, setUserStats] = useState<null | statistics>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const onRetrieveUserStats = async (userId: string) => {
-    console.log("calleeeeeeed");
-    await getUserStatsApi(userId);
+    setLoading(true)
+    const response = await getUserStatsApi(userId);
+    setUserStats(response.data)
+    setLoading(false)
   };
 
   return (
@@ -21,6 +24,8 @@ const UserProvider = ({ children }: Props) => {
         userStats,
         setUserStats,
         onRetrieveUserStats,
+        loading,
+        setLoading
       }}
     >
       {children}

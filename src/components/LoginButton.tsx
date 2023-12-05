@@ -1,6 +1,6 @@
 /*global chrome*/
 
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { getMeApi } from "../api/AuthApi";
 import { UserContext } from "../context/UserContext";
@@ -13,17 +13,26 @@ export const LoginButton = () => {
     loginWithPopup,
     getAccessTokenSilently,
     getIdTokenClaims,
+    isLoading,
     user,
   } = useAuth0();
 
+
+  useEffect(() => {
+    console.log(user)
+  }, [user])
+
   const handleLogin = async () => {
-    await loginWithPopup();
+    const res = await loginWithPopup()
+
+    
     const idToken = (await getIdTokenClaims()).__raw;
     //const result = getMeApi(idToken);
+    console.log(isLoading)
 
     // console.log(user);
     //console.log("____");
-    //const stats = onRetrieveUserStats(user.sub);
+     //onRetrieveUserStats(user.sub);
     //console.log(stats);
     //console.log(result);
   };
@@ -32,7 +41,7 @@ export const LoginButton = () => {
     !isAuthenticated && (
       <button
         onClick={() => {
-          handleLogin();
+          handleLogin()
         }}
       >
         Log in

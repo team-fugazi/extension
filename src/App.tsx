@@ -14,20 +14,16 @@ const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
 function App() {
   const { setSubreddit, onRetrieveSubreddit, setNumberOfScannedPosts } =
     useContext(RedditContext);
-  const { onRetrieveUserStats } = useContext(UserContext);
+  const { onRetrieveUserStats, userStats } = useContext(UserContext);
 
-  const { user, isAuthenticated, isLoading } = useAuth0();
-
-  if (isLoading == false && isAuthenticated) {
-    console.log("__________");
-    console.log(user);
-    console.log(user.sub);
-    console.log(user.name);
-    console.log("__________");
-    onRetrieveUserStats(user.sub);
-  }
+  const { user, isAuthenticated } = useAuth0();
 
   useEffect(() => {
+
+    if (isAuthenticated) {
+      onRetrieveUserStats(user.sub);
+    }
+
     chrome.tabs.query({ active: true, lastFocusedWindow: true }, (tabs) => {
       let url = tabs[0].url;
       if (url.includes("reddit.com")) {
@@ -42,14 +38,6 @@ function App() {
         setSubreddit(null);
       }
 
-      // if (isAuthenticated || user) {
-      //   console.log("__________");
-      //   console.log(user);
-      //   console.log(user.sub);
-      //   console.log(user.name);
-      //   console.log("__________");
-      //   onRetrieveUserStats(user.sub);
-      // }
     });
 
     // todo: load statistics everytime user enter a new subreddit
@@ -61,7 +49,7 @@ function App() {
         setNumberOfScannedPosts(data.numberOfAnalysedPosts);
       }
     });
-  });
+  }, [userStats]);
 
   return (
     <Auth0Provider

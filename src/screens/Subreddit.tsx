@@ -6,9 +6,9 @@ import { RedditContext } from "../context/RedditContext";
 const Subreddit = () => {
   const { subreddit, numberOfScannedPosts } = useContext(RedditContext);
 
-  useEffect(() => {
-    //    let test = new google.map
-  });
+  // useEffect(() => {
+  //   //    let test = new google.map
+  // });
 
   return (
     <div>
