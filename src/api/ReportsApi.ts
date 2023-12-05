@@ -5,6 +5,6 @@ export function getUserStatsApi(userId: string) {
       return response.json()
     })
     .catch((err) => {
-      throw new Error(err);
+        throw new Error(err);
     });
 }

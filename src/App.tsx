@@ -12,7 +12,7 @@ const domain = import.meta.env.VITE_AUTH0_DOMAIN;
 const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
 
 function App() {
-  const { setSubreddit, onRetrieveSubreddit, setNumberOfScannedPosts } =
+  const { setSubreddit, onRetrieveSubreddit, setNumberOfScannedPosts, setCurrentUrl } =
     useContext(RedditContext);
   const { onRetrieveUserStats, userStats } = useContext(UserContext);
 
@@ -28,6 +28,8 @@ function App() {
       let url = tabs[0].url;
       if (url.includes("reddit.com")) {
         if (url.startsWith("https://")) {
+          console.log(url)
+          setCurrentUrl(url)
           const subredditName = url.replace("https://www.reddit.com/r/", "");
           if (subredditName !== "https://www.reddit.com/") {
             const name = subredditName.substring(0, subredditName.indexOf("/"));
