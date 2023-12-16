@@ -31,6 +31,7 @@ export const LoginButton = () => {
   return (
     !isAuthenticated && (
       <button
+        data-testid="login-button"
         onClick={() => {
           handleLogin();
         }}
