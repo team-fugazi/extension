@@ -4,11 +4,11 @@ import reddit from "../assets/reddit-logo.png";
 import { RedditContext } from "../context/RedditContext";
 
 const Subreddit = () => {
-  const { subreddit, numberOfScannedPosts } = useContext(RedditContext);
+  const { subreddit, numberOfScannedPosts, currentUrl } = useContext(RedditContext);
 
-  useEffect(() => {
-    //    let test = new google.map
-  });
+  // useEffect(() => {
+  //   //    let test = new google.map
+  // });
 
   return (
     <div>
@@ -61,7 +61,9 @@ const Subreddit = () => {
 
             <div className="flex flex-col -space-y-1 ">
               <h3 className="font-semibold text-gray-900 text-md">
-                Reddit Dashboard
+                {currentUrl.includes("reddit.com")
+                  ? <>Reddit Dashboard</>
+                  : <>Visit Reddit to start scanning {currentUrl}</>}
               </h3>
               {/* <p className="font-medium text-gray-600 text-xs ">/subreddit</p> */}
             </div>

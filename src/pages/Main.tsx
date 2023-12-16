@@ -55,12 +55,16 @@ const MainScreen = () => {
               >
                 Subreddit
               </Tabs.Trigger>
-              <Tabs.Trigger
-                value="stats"
-                className="hover:bg-gray-100 w-full font-medium subpixel-antialiased"
-              >
-                Statistics
-              </Tabs.Trigger>
+              {isAuthenticated ? (
+                <Tabs.Trigger
+                  value="stats"
+                  className="hover:bg-gray-100 w-full font-medium subpixel-antialiased"
+                >
+                  Statistics
+                </Tabs.Trigger>
+              ) : (
+                <></>
+              )}
             </Tabs.List>
           </div>
 
@@ -75,9 +79,13 @@ const MainScreen = () => {
           </Tabs.Content>
 
           {/* Tab: User Statistics */}
-          <Tabs.Content value="stats">
-            <Statistics />
-          </Tabs.Content>
+          {isAuthenticated ? (
+            <Tabs.Content value="stats">
+              <Statistics />
+            </Tabs.Content>
+          ) : (
+            <></>
+          )}
         </Tabs.Root>
 
         {/* Footer */}

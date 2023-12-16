@@ -1,14 +1,19 @@
 import React, { createContext } from "react";
-import { subredditModel } from "../types/Types";
+import { statistics, subredditModel } from "../types/Types";
 
 interface IUserContext {
-  userStats: null | subredditModel;
-  setUserStats: React.Dispatch<React.SetStateAction<null | subredditModel>>;
+  userStats: null | statistics;
+  setUserStats: React.Dispatch<React.SetStateAction<null | statistics>>;
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   onRetrieveUserStats: (userId: string) => void;
 }
 
 export const UserContext = createContext<IUserContext>({
   userStats: null,
   setUserStats: () => {},
-  onRetrieveUserStats: () => {},
+  loading: null,
+  setLoading: () => {},
+  onRetrieveUserStats: (userId: string) => {},
+  
 });
