@@ -24,8 +24,6 @@ export const LoginButton = () => {
 
   const handleLogin = async () => {
     const res = await loginWithPopup()
-
-    
     const idToken = (await getIdTokenClaims()).__raw;
     //const result = getMeApi(idToken);
     console.log(isLoading)
